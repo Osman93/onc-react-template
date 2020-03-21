@@ -1,10 +1,14 @@
-import React from 'react'
-import { View , Text } from "react-native";
+import React from 'react';
+import {Container, Content, Text} from 'native-base';
 
 export default class Anasayfa extends React.Component {
 	render() {
 		return (
-			<View><Text>Anasayfa</Text></View>
-		)
+			<Container>
+				<Content padder>
+					<Text>Anasayfa</Text>
+				</Content>
+			</Container>
+		);
 	}
 }
