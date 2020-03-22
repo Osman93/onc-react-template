@@ -38,6 +38,8 @@ target 'temp' do
 
   pod 'react-native-webview', :path => '../node_modules/react-native-webview'
 
+  pod 'react-native-onesignal', :path => '../node_modules/react-native-onesignal'
+
   target 'tempTests' do
     inherit! :search_paths
     # Pods for testing

@@ -7,6 +7,7 @@ import FastImage from 'react-native-fast-image';
 import LinearGradient from 'react-native-linear-gradient';
 import Drawer from 'react-native-drawer';
 import { BannerAd, BannerAdSize, TestIds } from '@react-native-firebase/admob';
+import OneSignal from 'react-native-onesignal';
 import { AlertHelper } from "../helpers/AlertHelper"; 
 const htmlContent = `
     <h1>This HTML snippet is now rendered with native components !</h1>
@@ -21,15 +22,46 @@ export default class Anasayfa extends React.Component {
 	openControlPanel = () => {
 		this._drawer.open();
 	};
+
+	constructor(properties) {
+	    super(properties);
+	    OneSignal.init("YOUR_ONESIGNAL_APPID", {kOSSettingsKeyAutoPrompt : true});// set kOSSettingsKeyAutoPrompt to false prompting manually on iOS	
+
+	    OneSignal.addEventListener('received', this.onReceived);
+	    OneSignal.addEventListener('opened', this.onOpened);
+	    OneSignal.addEventListener('ids', this.onIds);
+	  }	
+
+	  componentWillUnmount() {
+	    OneSignal.removeEventListener('received', this.onReceived);
+	    OneSignal.removeEventListener('opened', this.onOpened);
+	    OneSignal.removeEventListener('ids', this.onIds);
+	  }	
+
+	  onReceived(notification) {
+	    console.log("Notification received: ", notification);
+	  }	
+
+	  onOpened(openResult) {
+	    console.log('Message: ', openResult.notification.payload.body);
+	    console.log('Data: ', openResult.notification.payload.additionalData);
+	    console.log('isActive: ', openResult.notification.isAppInFocus);
+	    console.log('openResult: ', openResult);
+	  }	
+
+	  onIds(device) {
+	    console.log('Device info: ', device);
+	  }
+	
 	componentWillMount() {
 		AlertHelper.show("info","Durum","Başarılı")
 		axios
 			.get('http://on-csoft.com/akis')
 			.then(res => {
-				console.log(res.data);
+				//console.log(res.data);
 			})
 			.catch(err => {
-				console.log(err.response);
+				//console.log(err.response);
 			});
 	}
 	render() {
@@ -57,18 +89,18 @@ export default class Anasayfa extends React.Component {
 								<Text>Aç</Text>
 							</TouchableOpacity>
 							<BannerAd
-      unitId={TestIds.BANNER}
-      size={BannerAdSize.FULL_BANNER}
-      requestOptions={{
-        requestNonPersonalizedAdsOnly: true,
-      }}
-      onAdLoaded={() => {
-        console.log('Advert loaded');
-      }}
-      onAdFailedToLoad={(error) => {
-        console.error('Advert failed to load: ', error);
-      }}
-    />
+      						  unitId={TestIds.BANNER}
+						      size={BannerAdSize.FULL_BANNER}
+						      requestOptions={{
+						        requestNonPersonalizedAdsOnly: true,
+						      }}
+						      onAdLoaded={() => {
+						        console.log('Advert loaded');
+						      }}
+						      onAdFailedToLoad={(error) => {
+						        console.error('Advert failed to load: ', error);
+						      }}
+						    />
 							<FastImage
 								source={require('../assets/oncLogo.png')}
 								resizeMode="contain"
