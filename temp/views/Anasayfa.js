@@ -6,6 +6,7 @@ import HTML from 'react-native-render-html';
 import FastImage from 'react-native-fast-image';
 import LinearGradient from 'react-native-linear-gradient';
 import Drawer from 'react-native-drawer';
+import { BannerAd, BannerAdSize, TestIds } from '@react-native-firebase/admob';
 import { AlertHelper } from "../helpers/AlertHelper"; 
 const htmlContent = `
     <h1>This HTML snippet is now rendered with native components !</h1>
@@ -55,6 +56,19 @@ export default class Anasayfa extends React.Component {
 							<TouchableOpacity onPress={this.openControlPanel}>
 								<Text>Aç</Text>
 							</TouchableOpacity>
+							<BannerAd
+      unitId={TestIds.BANNER}
+      size={BannerAdSize.FULL_BANNER}
+      requestOptions={{
+        requestNonPersonalizedAdsOnly: true,
+      }}
+      onAdLoaded={() => {
+        console.log('Advert loaded');
+      }}
+      onAdFailedToLoad={(error) => {
+        console.error('Advert failed to load: ', error);
+      }}
+    />
 							<FastImage
 								source={require('../assets/oncLogo.png')}
 								resizeMode="contain"
