@@ -6,8 +6,10 @@
  * @flow
  */
 import React, {Component} from 'react';
-import {BackHandler, Platform} from 'react-native';
+import {BackHandler, Platform , StatusBar , View} from 'react-native';
 import {Router, Stack, Scene, Actions} from 'react-native-router-flux';
+import DropdownAlert from 'react-native-dropdownalert';
+import {AlertHelper} from "./helpers/AlertHelper";
 import Splash from './views/Splash';
 import Anasayfa from './views/Anasayfa';
 export default class App extends Component {
@@ -16,6 +18,7 @@ export default class App extends Component {
   }
   render() {
     return (
+      <View style={{flex:1}}>
       <Router
         tintColor="white"
         backAndroidHandler={() => {
@@ -39,6 +42,12 @@ export default class App extends Component {
           />
         </Stack>
       </Router>
+      <DropdownAlert
+          defaultContainer={{ padding: 8, paddingTop: StatusBar.currentHeight, flexDirection: 'row' }}
+          ref={ref => AlertHelper.setDropDown(ref)}
+          onClose={() => AlertHelper.invokeOnClose()}
+        />
+      </View>
     );
   }
 }

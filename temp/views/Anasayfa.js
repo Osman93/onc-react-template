@@ -6,7 +6,7 @@ import HTML from 'react-native-render-html';
 import FastImage from 'react-native-fast-image';
 import LinearGradient from 'react-native-linear-gradient';
 import Drawer from 'react-native-drawer';
-
+import { AlertHelper } from "../helpers/AlertHelper"; 
 const htmlContent = `
     <h1>This HTML snippet is now rendered with native components !</h1>
     <h2>Enjoy a webview-free and blazing fast application</h2>
@@ -21,6 +21,7 @@ export default class Anasayfa extends React.Component {
 		this._drawer.open();
 	};
 	componentWillMount() {
+		AlertHelper.show("info","Durum","Başarılı")
 		axios
 			.get('http://on-csoft.com/akis')
 			.then(res => {
