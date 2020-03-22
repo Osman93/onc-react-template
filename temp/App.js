@@ -11,7 +11,7 @@ import {Router, Stack, Scene, Actions} from 'react-native-router-flux';
 import DropdownAlert from 'react-native-dropdownalert';
 import {AlertHelper} from "./helpers/AlertHelper";
 import Splash from './views/Splash';
-import Anasayfa from './views/Anasayfa';
+import Example from './views/Example';
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -35,8 +35,8 @@ export default class App extends Component {
             hideNavBar={true}
           />
           <Scene
-            key="anasayfa"
-            component={Anasayfa}
+            key="exp"
+            component={Example}
             hideNavBar={true}
             panHandlers={null}
           />

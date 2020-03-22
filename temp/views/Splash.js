@@ -30,7 +30,7 @@ class Splash extends Component {
   }
   componentDidMount() {
     setTimeout(() => {
-      Actions.anasayfa();
+      Actions.exp();
     }, 2000);
   }
 
