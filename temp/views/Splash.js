@@ -9,6 +9,8 @@ import {
   Dimensions,
 } from 'react-native';
 import {Actions} from 'react-native-router-flux';
+import Color from "../helpers/Color";
+
 const h = Dimensions.get('window').height;
 const height = h * 2;
 
@@ -30,7 +32,7 @@ class Splash extends Component {
   }
   componentDidMount() {
     setTimeout(() => {
-      Actions.exp();
+      Actions.home();
     }, 2000);
   }
 
@@ -61,7 +63,7 @@ const styles = {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: Color.colorSplashBefore,
   },
   icon: {
     width: 200,
@@ -70,7 +72,7 @@ const styles = {
   circle: {
     width: height,
     height,
-    backgroundColor: '#f54136',
+    backgroundColor: Color.colorSplashAfter,
     borderRadius: h,
     position: 'absolute',
     zIndex: -1,

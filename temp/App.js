@@ -7,16 +7,25 @@
  */
 import React, {Component} from 'react';
 import {BackHandler, Platform , StatusBar , View} from 'react-native';
-import {Router, Stack, Scene, Actions} from 'react-native-router-flux';
+import {Router, Stack, Scene, Actions , Tabs} from 'react-native-router-flux';
 import DropdownAlert from 'react-native-dropdownalert';
 import {AlertHelper} from "./helpers/AlertHelper";
 import Splash from './views/Splash';
-import Example from './views/Example';
+import ExampleLibrary from './ExampleUsage/ExampleLibrary';
+import ExampleMaster from './ExampleUsage/ExampleMaster';
+import Home from './views/Home';
+import Screen1 from './views/Footer/Screen1';
+import Screen2 from './views/Footer/Screen2';
+import FooterTemp from './components/FooterTemp';
+
+
+
 export default class App extends Component {
   constructor(props) {
     super(props);
   }
   render() {
+    console.disableYellowBox = true
     return (
       <View style={{flex:1}}>
       <Router
@@ -35,11 +44,27 @@ export default class App extends Component {
             hideNavBar={true}
           />
           <Scene
-            key="exp"
-            component={Example}
+            key="expLib"
+            component={ExampleLibrary}
             hideNavBar={true}
             panHandlers={null}
           />
+          <Tabs key="tab" tabs tabBarComponent={FooterTemp} hideNavBar={true}>
+              <Scene
+                key="home"
+                component={Home}
+                hideNavBar={true}
+                panHandlers={null}
+              />
+               <Scene
+                key="expMaster"
+                component={ExampleMaster}
+                hideNavBar={true}
+                panHandlers={null}
+              />
+              <Scene key="screen1" component={Screen1} hideNavBar={true}/>
+              <Scene key="screen2" component={Screen2} hideNavBar={true}/>
+          </Tabs>
         </Stack>
       </Router>
       <DropdownAlert

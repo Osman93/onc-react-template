@@ -6,16 +6,16 @@ import HTML from 'react-native-render-html';
 import FastImage from 'react-native-fast-image';
 import LinearGradient from 'react-native-linear-gradient';
 import Drawer from 'react-native-drawer';
-import { BannerAd, BannerAdSize, TestIds } from '@react-native-firebase/admob';
+import {BannerAd, BannerAdSize, TestIds} from '@react-native-firebase/admob';
 import OneSignal from 'react-native-onesignal';
-import { AlertHelper } from "../helpers/AlertHelper"; 
+import {AlertHelper} from '../helpers/AlertHelper';
 const htmlContent = `
     <h1>This HTML snippet is now rendered with native components !</h1>
     <h2>Enjoy a webview-free and blazing fast application</h2>
     <img src="https://i.imgur.com/dHLmxfO.jpg?2" />
     <em style="textAlign: center;">Look at how happy this native cat is</em>
 `;
-export default class Anasayfa extends React.Component {
+export default class ExampleLibrary extends React.Component {
 	closeControlPanel = () => {
 		this._drawer.close();
 	};
@@ -24,37 +24,37 @@ export default class Anasayfa extends React.Component {
 	};
 
 	constructor(properties) {
-	    super(properties);
-	    OneSignal.init("YOUR_ONESIGNAL_APPID", {kOSSettingsKeyAutoPrompt : true});// set kOSSettingsKeyAutoPrompt to false prompting manually on iOS	
+		super(properties);
+		OneSignal.init('YOUR_ONESIGNAL_APPID', {kOSSettingsKeyAutoPrompt: true}); // set kOSSettingsKeyAutoPrompt to false prompting manually on iOS
 
-	    OneSignal.addEventListener('received', this.onReceived);
-	    OneSignal.addEventListener('opened', this.onOpened);
-	    OneSignal.addEventListener('ids', this.onIds);
-	  }	
+		OneSignal.addEventListener('received', this.onReceived);
+		OneSignal.addEventListener('opened', this.onOpened);
+		OneSignal.addEventListener('ids', this.onIds);
+	}
 
-	  componentWillUnmount() {
-	    OneSignal.removeEventListener('received', this.onReceived);
-	    OneSignal.removeEventListener('opened', this.onOpened);
-	    OneSignal.removeEventListener('ids', this.onIds);
-	  }	
+	componentWillUnmount() {
+		OneSignal.removeEventListener('received', this.onReceived);
+		OneSignal.removeEventListener('opened', this.onOpened);
+		OneSignal.removeEventListener('ids', this.onIds);
+	}
 
-	  onReceived(notification) {
-	    console.log("Notification received: ", notification);
-	  }	
+	onReceived(notification) {
+		console.log('Notification received: ', notification);
+	}
 
-	  onOpened(openResult) {
-	    console.log('Message: ', openResult.notification.payload.body);
-	    console.log('Data: ', openResult.notification.payload.additionalData);
-	    console.log('isActive: ', openResult.notification.isAppInFocus);
-	    console.log('openResult: ', openResult);
-	  }	
+	onOpened(openResult) {
+		console.log('Message: ', openResult.notification.payload.body);
+		console.log('Data: ', openResult.notification.payload.additionalData);
+		console.log('isActive: ', openResult.notification.isAppInFocus);
+		console.log('openResult: ', openResult);
+	}
 
-	  onIds(device) {
-	    console.log('Device info: ', device);
-	  }
-	
+	onIds(device) {
+		console.log('Device info: ', device);
+	}
+
 	componentWillMount() {
-		AlertHelper.show("info","Durum","Başarılı")
+		AlertHelper.show('info', 'Durum', 'Başarılı');
 		axios
 			.get('http://on-csoft.com/akis')
 			.then(res => {
@@ -89,18 +89,18 @@ export default class Anasayfa extends React.Component {
 								<Text>Aç</Text>
 							</TouchableOpacity>
 							<BannerAd
-      						  unitId={TestIds.BANNER}
-						      size={BannerAdSize.FULL_BANNER}
-						      requestOptions={{
-						        requestNonPersonalizedAdsOnly: true,
-						      }}
-						      onAdLoaded={() => {
-						        console.log('Advert loaded');
-						      }}
-						      onAdFailedToLoad={(error) => {
-						        console.error('Advert failed to load: ', error);
-						      }}
-						    />
+								unitId={TestIds.BANNER}
+								size={BannerAdSize.FULL_BANNER}
+								requestOptions={{
+									requestNonPersonalizedAdsOnly: true,
+								}}
+								onAdLoaded={() => {
+									console.log('Advert loaded');
+								}}
+								onAdFailedToLoad={error => {
+									console.error('Advert failed to load: ', error);
+								}}
+							/>
 							<FastImage
 								source={require('../assets/oncLogo.png')}
 								resizeMode="contain"
