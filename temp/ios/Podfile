@@ -49,20 +49,8 @@ target 'temp' do
       end
     end
   end
-  target 'tempTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+ 
 
   use_native_modules!
 end
 
-target 'temp-tvOS' do
-  # Pods for temp-tvOS
-
-  target 'temp-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-end
