@@ -16,11 +16,13 @@ import {Actions} from 'react-native-router-flux';
 import OneSignal from 'react-native-onesignal';
 import axios from 'axios';
 import Color from '../helpers/Color';
+import Config from '../helpers/Config';
+
 const {width, height} = Dimensions.get('window');
 class SideBar extends Component {
 	constructor(properties) {
 		super(properties);
-		OneSignal.init('App_id');
+		OneSignal.init(Config.onesignal_app_id);
 	}
 
 	exitApp() {
@@ -49,20 +51,20 @@ class SideBar extends Component {
 						<List style={{width: width * 0.8}}>
 							<ListItem
 								style={styles.listItemStyle}
-								onPress={() => Actions.expMaster()}>
+								onPress={() => Actions.expLib()}>
 								<Icon
 									name="calendar"
 									type="AntDesign"
 									style={styles.iconStyle}
 								/>
-								<Text style={styles.listItemTextStyle}>Anasayfa</Text>
+								<Text style={styles.listItemTextStyle}>Library Example</Text>
 							</ListItem>
 
 							<ListItem
 								style={styles.listItemStyle}
 								onPress={() => this.exitApp()}>
 								<Icon name="logout" type="AntDesign" style={styles.iconStyle} />
-								<Text style={styles.listItemTextStyle}>Çıkış</Text>
+								<Text style={styles.listItemTextStyle}>Exit</Text>
 							</ListItem>
 						</List>
 					</ScrollView>

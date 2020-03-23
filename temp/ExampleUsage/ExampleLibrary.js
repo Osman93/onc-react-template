@@ -9,6 +9,7 @@ import Drawer from 'react-native-drawer';
 import {BannerAd, BannerAdSize, TestIds} from '@react-native-firebase/admob';
 import OneSignal from 'react-native-onesignal';
 import {AlertHelper} from '../helpers/AlertHelper';
+import Config from "../helpers/Config";
 const htmlContent = `
     <h1>This HTML snippet is now rendered with native components !</h1>
     <h2>Enjoy a webview-free and blazing fast application</h2>
@@ -55,13 +56,14 @@ export default class ExampleLibrary extends React.Component {
 
 	componentWillMount() {
 		AlertHelper.show('info', 'Durum', 'Başarılı');
+
 		axios
-			.get('http://on-csoft.com/akis')
+			.get(Config.base_url + 'akis')
 			.then(res => {
-				//console.log(res.data);
+				console.log(res.data);
 			})
 			.catch(err => {
-				//console.log(err.response);
+				console.log(err.response);
 			});
 	}
 	render() {

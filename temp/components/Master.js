@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import { View, Text ,Keyboard} from "native-base";
 import Drawer from "react-native-drawer";
+import {BannerAd, BannerAdSize, TestIds} from '@react-native-firebase/admob';
+import Config from "../helpers/Config";
 import SideBar from "./SideBar";
 import HeaderTemp from "./HeaderTemp";
 class Master extends Component {
 	render() {
+		
 		return (
 			<Drawer
 				ref={ref => (this._drawer = ref)}
@@ -28,6 +31,19 @@ class Master extends Component {
 					tabs={this.props.renderTabs}
 				/>
 				{this.props.renderScene}
+				<BannerAd
+					unitId={Config.admob_id}
+					size={BannerAdSize.FULL_BANNER}
+					requestOptions={{
+						requestNonPersonalizedAdsOnly: true,
+					}}
+					onAdLoaded={() => {
+						console.log('Advert loaded');
+					}}
+					onAdFailedToLoad={error => {
+						console.error('Advert failed to load: ', error);
+					}}
+				/>
 			</Drawer>
 		);
 	}

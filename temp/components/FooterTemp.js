@@ -14,7 +14,6 @@ import {Footer, FooterTab, Button, Text as NBText, Icon} from 'native-base';
 import {Actions} from 'react-native-router-flux';
 import LinearGradient from 'react-native-linear-gradient';
 import Color from '../helpers/Color';
-
 const {width, height} = Dimensions.get('window');
 class FooterTemp extends React.Component {
   state = {
@@ -41,7 +40,7 @@ class FooterTemp extends React.Component {
                 Actions.home();
               }}>
               <Icon
-                name="paper"
+                name="home"
                 style={{
                   color:
                     this.state.screen == 'home'
@@ -100,7 +99,7 @@ class FooterTemp extends React.Component {
               vertical
               onPress={() => {
                 this.setState({screen: 'screen2'});
-                Actions.expMaster();
+                Actions.screen2();
               }}>
               <Icon
                 name="ios-book"
@@ -119,6 +118,37 @@ class FooterTemp extends React.Component {
                       : Color.footerPassiveTextColor,
                 }}>
                 Screen2
+              </Text>
+            </Button>
+            <Button
+              style={{
+                backgroundColor:
+                  this.state.screen == 'expMaster'
+                    ? Color.footerActiveBgColor
+                    : 'transparent',
+              }}
+              vertical
+              onPress={() => {
+                this.setState({screen: 'expMaster'});
+                Actions.expMaster();
+              }}>
+              <Icon
+                name="ios-book"
+                style={{
+                  color:
+                    this.state.screen == 'expMaster'
+                      ? Color.footerActiveTextColor
+                      : Color.footerPassiveTextColor,
+                }}
+              />
+              <Text
+                style={{
+                  color:
+                    this.state.screen == 'expMaster'
+                      ? Color.footerActiveTextColor
+                      : Color.footerPassiveTextColor,
+                }}>
+                Example Master
               </Text>
             </Button>
           </FooterTab>

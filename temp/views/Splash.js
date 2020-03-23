@@ -17,7 +17,7 @@ const height = h * 2;
 class Splash extends Component {
   circle = new Animated.Value(0);
   logo = new Animated.Value(0);
-
+ 
   componentWillMount() {
     Animated.parallel([
       Animated.timing(this.circle, {
@@ -32,7 +32,7 @@ class Splash extends Component {
   }
   componentDidMount() {
     setTimeout(() => {
-      Actions.home();
+      Actions.login();
     }, 2000);
   }
 

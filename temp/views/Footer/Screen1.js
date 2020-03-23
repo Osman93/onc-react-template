@@ -6,7 +6,7 @@ import Master from '../../components/Master';
 export default class Screen1 extends React.Component {
 	renderScene() {
 		return (
-			<View>
+			<View style={{flex:1}}>
 				<Text>Screen1</Text>
 			</View>
 		)
