@@ -5,5 +5,4 @@ export default class Color{
 	static footerActiveBgColor = "#08ccf9";
 	static footerActiveTextColor = "white";
 	static footerPassiveTextColor = "white";
-
 }

@@ -410,7 +410,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-temp-OneSignalNotificationServiceExtension/Pods-temp-OneSignalNotificationServiceExtension-resources.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-temp-OneSignalNotificationServiceExtension/Pods-temp-OneSignalNotificationServiceExtension-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/PersonalizedAdConsent/PersonalizedAdConsent.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -419,7 +419,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-temp-OneSignalNotificationServiceExtension/Pods-temp-OneSignalNotificationServiceExtension-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-temp-OneSignalNotificationServiceExtension/Pods-temp-OneSignalNotificationServiceExtension-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		05C6CB776269CB87BA829459 /* [CP-User] [RNFB] Core Configuration */ = {
@@ -439,7 +439,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-temp/Pods-temp-resources.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-temp/Pods-temp-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/PersonalizedAdConsent/PersonalizedAdConsent.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -448,7 +448,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-temp/Pods-temp-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-temp/Pods-temp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AF1878530184965369A45702 /* [CP] Check Pods Manifest.lock */ = {
