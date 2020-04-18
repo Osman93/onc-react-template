@@ -22,7 +22,7 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
-        <meta-data tools:node="replace" android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-6870817744591145~9364155216"/>
+        <meta-data tools:node="replace" android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="Admob_id_added"/>
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
 
     </application>
